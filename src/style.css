@@ -1,0 +1,168 @@
+/* Estilos globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Estilo para o cabeÃ§alho */
+  header h1 {
+    color: #b30000; /* Vermelho escuro */
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* SeÃ§Ã£o de entradas (botÃµes e formulÃ¡rios) */
+  .input-section {
+    margin-bottom: 30px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* BotÃµes de aÃ§Ã£o */
+  button {
+    background-color: #b30000; /* Vermelho escuro */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+  }
+  
+  button:hover {
+    background-color: #800000; /* Vermelho ainda mais escuro */
+  }
+  
+  /* Inputs de formulÃ¡rio */
+  input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  /* Estilo para a barra de busca */
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo da tabela */
+  .account-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .account-table th, .account-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .account-table th {
+    background-color: #b30000; /* Vermelho escuro */
+    color: white;
+    text-align: center;
+  }
+  
+  .account-table td {
+    text-align: center;
+    color: #333;
+  }
+  
+  .copy-icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    color: #b30000; /* Vermelho escuro */
+  }
+  
+  .copy-icon:hover {
+    color: #800000; /* Vermelho ainda mais escuro */
+  }
+  
+  /* Mensagem de sucesso de cÃ³pia */
+  .copied-message {
+    color: green;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  /* Mensagens de sucesso e erro */
+  .success-message {
+    color: green;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Estilo do rodapÃ© */
+  footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #666;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  /* Estilos responsivos */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  
+    .action-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    input[type="text"] {
+      width: 100%;
+    }
+  
+    .account-table th, .account-table td {
+      padding: 10px 8px;
+      font-size: 0.9rem;
+    }
+  }
