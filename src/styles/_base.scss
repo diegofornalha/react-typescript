@@ -1,0 +1,148 @@
+#root,
+#__next {
+	isolation: isolate;
+}
+
+/* For browsers that support `` properties */
+@supports (-moz-appearance: none) {
+	.page-container {
+		scrollbar-color: $blue-main $darkest;
+		scrollbar-width: thin;
+	}
+}
+
+.page-container,
+.mobile-menu__content,
+.idea-tabs--urls {
+	&::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+
+		@include tabletBig {
+			width: 2px;
+			height: 2px;
+		}
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $darkest;
+		border-radius: 10px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $blue-main;
+		border-radius: 10px;
+	}
+}
+
+body {
+	text-rendering: optimizeLegibility;
+	color: $snow;
+	background: $darken;
+	width: 100%;
+	font-size: 1rem;
+	line-height: 1.3;
+	font-family: $Roboto;
+	font-weight: normal;
+	letter-spacing: 0.8px;
+	user-select: none;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+
+	@include tablet {
+		height: 100vh;
+		height: calc(var(--vh, 1vh) * 100);
+	}
+}
+
+button {
+	color: $snow;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.wrapper {
+	margin: 0 auto;
+	max-width: 1600px;
+	width: 100%;
+	padding: 0 40px;
+
+	@include mobile {
+		padding: 0 10px;
+	}
+}
+
+.page-container {
+	overflow-x: hidden;
+	overflow-y: auto;
+	scrollbar-gutter: stable;
+	height: 100%;
+}
+
+.h1 {
+	letter-spacing: 10px;
+	font-family: $LouisGeorgeCafBold;
+}
+
+.base-title {
+	font-size: 41px;
+	font-size: clamp(41px, 2.8vw, 70px);
+	margin-top: 30px;
+	white-space: nowrap;
+
+	@include mobile {
+		margin-top: 10px;
+		letter-spacing: 9px;
+	}
+
+	@include mobileSmall {
+		font-size: 35px;
+	}
+}
+
+.h2 {
+	font-family: $Raleway;
+	font-weight: 600;
+	letter-spacing: 3px;
+	line-height: 1.3;
+}
+
+.tag-color {
+	color: $blue-main;
+}
+
+.pos-abs {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.page.slide-enter .header,
+.page.slide-enter .about-item .ball {
+	z-index: 0;
+}
+
+.logo-link.active,
+.nav-link.active,
+.idea-tabs__btn.active,
+.page.slide-exit .idea-tabs__btn,
+.page.slide-exit .nav-link,
+.page.slide-exit .logo-link {
+	pointer-events: none;
+}
+
+.logo,
+.mobile-menu-btn,
+.ball {
+	cursor: pointer;
+}

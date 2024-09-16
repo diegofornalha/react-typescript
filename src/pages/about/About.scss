@@ -1,0 +1,222 @@
+@import '../../styles/variables';
+
+.about-wrapper {
+	margin-bottom: -80px;
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 90px);
+
+	@include tablet {
+		height: calc(100% - 80px);
+		padding-bottom: 45px;
+
+		.base-title {
+			margin-bottom: 30px;
+		}
+	}
+}
+
+.about-info {
+	position: relative;
+	color: $blue-main;
+	max-width: 450px;
+	width: 100%;
+	margin: auto;
+
+	@include mobile {
+		max-width: 315px;
+	}
+
+	img {
+		pointer-events: none;
+		filter: drop-shadow(0 0 5px rgba($color: $darkest, $alpha: 0.8));
+	}
+
+	.title {
+		font-family: $cs;
+		font-size: 18px;
+		letter-spacing: 2px;
+		line-height: normal;
+		width: 61%;
+		backface-visibility: hidden;
+		text-align: center;
+		font-weight: 600;
+
+		@include mobile {
+			font-size: 14px;
+			width: 50%;
+		}
+
+		&__sub {
+			display: block;
+		}
+	}
+
+	.title,
+	.ball {
+		position: absolute;
+	}
+
+	.show {
+		opacity: 0;
+		transition: all 0.4s;
+	}
+
+	.ball {
+		width: 35px;
+		height: 35px;
+		z-index: 5;
+		transition: all 0.1s;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:after {
+			content: '';
+			display: block;
+			width: 14px;
+			height: 14px;
+			background: $blue-main;
+			border-radius: 50%;
+			filter: drop-shadow(0 0 3px rgba($color: $darkest, $alpha: 1));
+		}
+	}
+
+	.ball.active {
+		transform: scale(0);
+
+		~ .show {
+			opacity: 1;
+		}
+	}
+
+	.brain {
+		.ball {
+			left: 49%;
+			top: 7%;
+
+			@include mobile {
+				left: 47%;
+				top: 5%;
+			}
+		}
+
+		.title {
+			right: -25%;
+			top: 3%;
+			transform: rotate(12deg);
+
+			@include mobile {
+				top: -4%;
+				right: -4%;
+			}
+		}
+	}
+
+	.writer {
+		.ball {
+			left: 45%;
+			top: 27%;
+
+			@include mobile {
+				left: 43%;
+				top: 26%;
+			}
+		}
+
+		.title {
+			top: 31%;
+			left: -28%;
+			transform: rotate(-10deg);
+
+			@include mobile {
+				width: 58%;
+				top: -7%;
+				left: auto;
+				right: -5%;
+				transform: rotate(6deg);
+			}
+		}
+	}
+
+	.keyboard {
+		.ball {
+			left: 27.2%;
+			top: 44%;
+
+			@include mobile {
+				left: 26%;
+				top: 42%;
+			}
+		}
+
+		.title {
+			top: 8%;
+			left: -25%;
+			transform: rotate(-8deg);
+			text-align: left;
+
+			@include mobile {
+				top: 3%;
+				left: -5%;
+			}
+
+			@include mobileSmall {
+				width: 45%;
+				top: -3%;
+				left: 2%;
+			}
+		}
+	}
+
+	.backpack {
+		.ball {
+			right: 20%;
+			top: 46%;
+
+			@include mobile {
+				right: 18%;
+				top: 43%;
+			}
+		}
+
+		.title {
+			bottom: 31%;
+			right: -30%;
+			transform: rotate(10deg);
+
+			@include mobile {
+				bottom: 27%;
+				right: -12%;
+			}
+		}
+	}
+
+	.roots {
+		.ball {
+			left: 23%;
+			bottom: 26%;
+
+			@include mobile {
+				left: 20%;
+				bottom: 25%;
+			}
+		}
+
+		.title {
+			bottom: 38%;
+			left: -36%;
+			transform: rotate(-8deg);
+
+			@include mobile {
+				bottom: 57%;
+				left: -8%;
+			}
+
+			@include mobileSmall {
+				left: -4%;
+			}
+		}
+	}
+}

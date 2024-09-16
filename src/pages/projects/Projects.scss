@@ -1,0 +1,152 @@
+@import '../../styles/variables.scss';
+
+.projects-container {
+	padding-top: 40px;
+	padding-bottom: 50px;
+}
+
+.project {
+	display: flex;
+	position: relative;
+	font-size: 13px;
+	border-radius: 20px;
+	transform: translate(0, 0);
+	transition: transform 0.3s ease;
+
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 1px;
+		left: 1px;
+		width: calc(100% - 2px);
+		height: calc(100% - 2px);
+		background-color: $blue-main;
+		transform: translateY(0);
+		transition: transform 0.3s ease 0.2s;
+		border-radius: 20px;
+	}
+
+	&-link {
+		position: relative;
+		background-color: $darken;
+		border-radius: 20px;
+		box-shadow: 0 0 10px rgba($color: $black, $alpha: 1);
+		transition: box-shadow 0.3s ease;
+		overflow: hidden;
+
+		&__img {
+			filter: brightness(0.55);
+			border-radius: 20px;
+			height: 100%;
+			object-fit: contain;
+			transition: filter 0.3s ease;
+		}
+	}
+
+	&:hover {
+		z-index: 2;
+		transform: translate(-10px, -20px);
+
+		@include mobile {
+			transform: translate(0, -20px);
+		}
+
+		&::before {
+			transform: translate(22px, 22px);
+
+			@include mobile {
+				transform: translate(0, 22px);
+			}
+		}
+
+		.project-link {
+			box-shadow: 10px 10px 10px rgba($color: $black, $alpha: 0.7);
+
+			@include mobile {
+				box-shadow: 0 10px 10px rgba($color: $black, $alpha: 0.7);
+			}
+
+			&__img {
+				filter: brightness(1);
+			}
+		}
+
+		.project-description {
+			opacity: 1;
+		}
+	}
+}
+
+.project-description {
+	position: absolute;
+	background-color: rgba($color: $black, $alpha: 0.7);
+	backdrop-filter: blur(20px);
+	box-shadow: 0 0 10px rgba($color: $black, $alpha: 1);
+	border-radius: 20px;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 15px;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	overflow: hidden;
+
+	&__name {
+		color: $starYellow;
+		font-family: $Raleway;
+		letter-spacing: 3px;
+		margin-bottom: 20px;
+		text-align: center;
+		font-size: 15px;
+
+		span {
+			animation: LowLine 0.4s infinite;
+		}
+	}
+
+	&__text {
+		margin-bottom: 20px;
+		color: $textGrey;
+	}
+
+	&__actions {
+		display: flex;
+		margin-bottom: 30px;
+		font-size: 14px;
+
+		.nav-link {
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 11px;
+			padding-right: 6px;
+
+			&:not(:last-child) {
+				margin-right: 30px;
+			}
+		}
+	}
+
+	&__title {
+		color: $blue-main;
+		font-family: $LouisGeorgeCaf;
+		font-weight: 600;
+		letter-spacing: 3px;
+		font-size: 14px;
+		margin-right: auto;
+		text-transform: uppercase;
+	}
+
+	&__items {
+		font-family: $LouisGeorgeCaf;
+
+		span {
+			display: inline-block;
+			margin-right: 6px;
+			margin-top: 10px;
+			background-color: rgba($color: $black, $alpha: 1);
+			padding: 5px 10px 2px;
+			border-radius: 20px;
+		}
+	}
+}

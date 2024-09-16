@@ -1,0 +1,924 @@
+@import '../../styles/variables';
+@import '../../styles/animation';
+
+.wrapper--idea {
+	position: relative;
+	padding-bottom: 30px;
+	height: calc(100% - 90px);
+
+	@include tabletBig {
+		height: auto;
+	}
+
+	@include mobile {
+		padding-right: 0;
+		padding-left: 0;
+		padding-bottom: 0;
+	}
+}
+
+.addToHome {
+	button {
+		background: #fff;
+		padding: 20px;
+		position: fixed;
+		right: 20px;
+		bottom: 20px;
+	}
+}
+
+// underline link effect
+.nav-link--underline {
+	z-index: unset;
+	font-size: 18px;
+	cursor: default;
+
+	@include tabletBig {
+		cursor: pointer;
+	}
+
+	&::after {
+		z-index: unset;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 2px;
+		background-color: $blue-main;
+		transition: transform 0.4s ease;
+		transform: scale(0, 1);
+		z-index: 2;
+	}
+
+	&:hover::after {
+		transform: scale(0, 1);
+		height: 2px;
+	}
+
+	&:hover::before {
+		transform: scale(1, 1);
+	}
+}
+
+.idea-contacts {
+	position: relative;
+	display: inline-block;
+	margin: auto auto 0;
+	width: max-content;
+	font-family: $LouisGeorgeCaf;
+	font-weight: 500;
+
+	@include tabletBig {
+		margin-top: 50px;
+		line-height: 1.3;
+	}
+
+	&__list {
+		user-select: text;
+		position: absolute;
+		bottom: 47px;
+		left: 50%;
+		transform: translateX(-50%);
+		box-shadow: 0 0 10px rgba($color: $black, $alpha: 0.8);
+		border-radius: 10px;
+		background-color: rgba($color: $black, $alpha: 0.9);
+		color: $textGrey;
+		display: inline-block;
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+		transition: 0.4s;
+		width: max-content;
+		z-index: 1;
+
+		&-items {
+			padding: 20px 25px;
+		}
+
+		p {
+			margin-bottom: 15px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		a {
+			color: $blue-main;
+			transition: color 0.3s;
+
+			&:hover {
+				color: $starYellow;
+			}
+		}
+	}
+
+	&.show {
+		.idea-contacts__list {
+			visibility: visible;
+
+			&::after {
+				transform: translate(-50%, 0) scale(1, 1);
+			}
+		}
+
+		.nav-link--underline {
+			&:after {
+				transform: scale(0, 1);
+				height: 2px;
+			}
+
+			&:before {
+				transform: scale(1, 1);
+			}
+		}
+	}
+}
+
+.slider-with-btn {
+	display: flex;
+	width: 100%;
+
+	@include tabletBig {
+		margin-left: -40px;
+		width: calc(100% + 80px);
+		margin-bottom: 25px;
+		margin-top: 30px;
+	}
+
+	@include mobile {
+		margin-left: -15px;
+		width: calc(100% + 30px);
+	}
+
+	&.disabled {
+		.slider-js {
+			width: 100%;
+		}
+
+		.slider-btn-js,
+		.slides-number {
+			pointer-events: none;
+			filter: grayscale(1);
+
+			@include tabletBig {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+.idea-section {
+	background: $darker;
+	padding: 0 40px 35px;
+	display: flex;
+	position: relative;
+	box-shadow: 0 0 10px rgba($color: $black, $alpha: 1);
+	height: 100%;
+	max-height: calc(100% - 35px);
+	border-radius: 0 10px 10px 10px;
+	overflow: hidden;
+
+	@include tabletBig {
+		border-radius: 20px;
+		max-height: none;
+		height: auto;
+		flex-direction: column-reverse;
+		max-width: 777px;
+		width: 100%;
+		margin: 0 auto;
+		padding-bottom: 75px;
+		box-shadow: 0 0 6px rgba($color: $darkest, $alpha: 1);
+	}
+
+	@include mobile {
+		padding-left: 15px;
+		padding-right: 15px;
+		border-radius: 0;
+	}
+}
+
+.idea-info {
+	height: 100%;
+	width: calc(50% + 2px);
+	margin-right: 40px;
+	padding-top: 40px;
+	flex-shrink: 0;
+	position: relative;
+	overflow: hidden;
+
+	@include tabletBig {
+		padding-top: 0;
+		height: auto;
+		width: 100%;
+		margin-right: 0;
+		flex-shrink: unset;
+		overflow: visible;
+	}
+}
+
+.copy-tablet {
+	display: flex;
+
+	@include tabletBig {
+		justify-content: center;
+	}
+}
+
+.idea-copy {
+	display: inline-block;
+	font-size: 14px;
+	color: $textGrey;
+	font-family: $LouisGeorgeCafBold;
+
+	@include tabletBig {
+		font-size: 15px;
+		margin-right: unset;
+	}
+
+	p {
+		overflow: hidden;
+		border-right: 1.5px solid $blue-main;
+		white-space: nowrap;
+		width: 0;
+		animation: typing 2.5s steps(18, end) 2s forwards, blink-caret 1s step-end infinite;
+	}
+
+	span {
+		font-size: 15px;
+	}
+}
+
+.startup-action {
+	@include mobile {
+		padding: 0 10px;
+	}
+}
+
+.idea-tabs {
+	display: flex;
+	width: max-content;
+	overflow: hidden;
+	font-family: $LouisGeorgeCaf;
+
+	@include tabletBig {
+		width: 100%;
+	}
+
+	&--urls {
+		white-space: nowrap;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		box-shadow: 0 0 10px rgba($color: $black, $alpha: 1);
+		letter-spacing: 0;
+
+		@include tabletBig {
+			max-width: 777px;
+			margin: 10px auto 25px;
+			text-align: center;
+			border-radius: 20px;
+			box-shadow: 0 0 6px rgba($color: $black, $alpha: 1);
+		}
+
+		.idea-tabs__btn {
+			text-transform: none;
+			padding: 7px 35px;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+			font-size: 15px;
+			letter-spacing: 1px;
+
+			@include tabletBig {
+				padding: 9px 3px 7px;
+				font-size: 14px;
+			}
+
+			&.active {
+				font-size: 17px;
+				font-family: $LouisGeorgeCafBold;
+				text-transform: uppercase;
+
+				@include tabletBig {
+					font-size: 14px;
+				}
+			}
+
+			&:hover {
+				text-shadow: 0 0 0.7px $blue-main, 0 0 0.7px $blue-main;
+				color: $blue-main;
+			}
+		}
+	}
+
+	&--lang {
+		font-size: 13px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		box-shadow: 0 0 10px rgba($color: $black, $alpha: 1);
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		overflow: hidden;
+		font-family: $LouisGeorgeCafBold;
+
+		@include tabletBig {
+			margin: 35px auto;
+			width: max-content;
+			border-radius: 20px;
+			position: static;
+			box-shadow: 0 0 6px rgba($color: $black, $alpha: 1);
+		}
+
+		.idea-tabs__btn {
+			@include tabletBig {
+				width: 58px;
+			}
+
+			&:hover {
+				text-shadow: 0 0 0.7px $snow;
+			}
+		}
+	}
+
+	&__btn {
+		background: $black;
+		color: $snow;
+		padding: 6px 18px;
+		text-transform: uppercase;
+		line-height: normal;
+
+		@include tabletBig {
+			width: 100%;
+			flex-grow: 1;
+			padding-top: 8px;
+			padding-bottom: 6px;
+		}
+
+		&.active {
+			background: $blue-main;
+			text-shadow: 0 0 0.7px $snow;
+		}
+	}
+}
+
+.startup-title {
+	text-align: center;
+	font-size: 31px;
+	margin-bottom: 35px;
+	margin-top: 15px;
+	color: $starYellow;
+
+	@include tabletBig {
+		margin-top: 30px;
+		margin-bottom: 0;
+	}
+}
+
+.startup-ideas {
+	.startup-title {
+		font-family: $LouisGeorgeCafBold;
+		margin-bottom: 0;
+		font-size: 16px;
+		text-align: right;
+		margin-bottom: 15px;
+		// TODO: need color pitch number
+		color: $textGrey;
+
+		@include tabletBig {
+			text-align: center;
+			font-size: 18px;
+		}
+	}
+}
+
+.headline {
+	&__title {
+		margin-bottom: 35px;
+		font-size: 31px;
+		color: $starYellow;
+		text-align: center;
+	}
+}
+
+.headline-types {
+	margin-bottom: 25px;
+	font-style: italic;
+	font-size: 15px;
+	font-family: $Raleway;
+
+	&__title:not(:last-child) {
+		margin-bottom: 3px;
+	}
+
+	span {
+		font-weight: bold;
+	}
+}
+
+.idea-content {
+	line-height: 1.5;
+}
+
+.idea-block {
+	font-size: 18px;
+	color: $textGrey;
+	margin-bottom: 30px;
+
+	@include mobile {
+		font-size: 16px;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	&__title {
+		color: $blue-main;
+		font-size: 24px;
+		margin-bottom: 15px;
+
+		@include tabletBig {
+			font-size: 21px;
+		}
+	}
+
+	&__subtitle {
+		color: $titlePink;
+		margin: 25px 0 10px;
+		letter-spacing: 2px;
+	}
+
+	&__text {
+		margin-bottom: 20px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	a {
+		display: inline;
+		position: relative;
+
+		span {
+			background-image: linear-gradient(currentColor, currentColor);
+			background-size: 100% 1px;
+			background-repeat: no-repeat;
+			background-position: left bottom;
+			transition: background-size 0.3s;
+		}
+
+		@include tablet {
+			&:focus {
+				color: $snow;
+			}
+		}
+
+		&:hover {
+			span {
+				background-size: 0 1px;
+			}
+		}
+	}
+
+	ul {
+		margin-bottom: 20px;
+	}
+
+	li {
+		margin-bottom: 10px;
+		position: relative;
+		display: flex;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		&::before {
+			content: '';
+			display: inline-block;
+			flex-shrink: 0;
+			width: 4px;
+			height: 4px;
+			border-radius: 50%;
+			background: $titlePink;
+			margin-right: 11px;
+			margin-top: 11px;
+		}
+	}
+}
+
+.last-words {
+	text-align: right;
+	font-family: $Raleway;
+	font-style: italic;
+	margin-top: 65px;
+	font-size: 15px;
+	white-space: pre-line;
+
+	@include tabletBig {
+		margin-bottom: 65px;
+		padding-right: 0;
+	}
+
+	span {
+		display: block;
+	}
+}
+
+// Slider default style
+.slider-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	margin-top: 40px;
+
+	@include tabletBig {
+		margin-top: 0;
+		align-items: center;
+		overflow: hidden;
+		height: 350px;
+		background-color: $black;
+		box-shadow: 0 0 6px rgba($color: $black, $alpha: 1);
+		border-radius: 25px;
+	}
+
+	@include mobile {
+		height: 250px;
+	}
+}
+
+.slider-js {
+	width: 100%;
+	display: flex;
+	height: 400px;
+	transition: transform 0.4s ease-in;
+	position: relative;
+	overflow: hidden;
+	background-color: $black;
+	box-shadow: 0 0 10px rgba($color: $black, $alpha: 1);
+	border-radius: 10px;
+
+	@include tabletBig {
+		height: 100%;
+		width: calc(100% - 80px);
+		box-shadow: unset;
+		border-radius: 0;
+	}
+
+	@include mobile {
+		width: calc(100% - 60px);
+	}
+}
+
+.slider-item-js {
+	width: 100%;
+	height: 100%;
+	flex-shrink: 0;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: $textGrey;
+	z-index: -1;
+	transition: z-index 0.4s ease;
+	color: $snow;
+
+	img,
+	video {
+		object-position: center;
+		object-fit: cover;
+		height: 100%;
+		opacity: 0;
+		visibility: hidden;
+		transform: scale(1.3);
+		transition: transform 0.4s ease-out, opacity 0.4s ease, visibility 0.4s ease;
+	}
+
+	video {
+		cursor: pointer;
+		object-fit: contain;
+	}
+
+	&[data-active='true'] {
+		z-index: 0;
+
+		img,
+		video {
+			transform: scale(1);
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+// Video poster preview
+.video-preview {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $black;
+	cursor: pointer;
+
+	&.disabled {
+		display: none;
+	}
+
+	&:hover {
+		color: $blue-main;
+
+		.video-preview__title {
+			box-shadow: inset 0 -100px 100px rgba($color: $black, $alpha: 0.9);
+		}
+
+		img {
+			transform: scale(1.2);
+		}
+
+		svg {
+			transform: translate(-50%, -50%) scale(1.3);
+		}
+	}
+
+	svg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(1);
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		background-color: rgba($color: $black, $alpha: 0.7);
+		transition: 0.4s ease-out;
+
+		@include tablet {
+			width: 90px;
+			height: 90px;
+		}
+	}
+
+	&__title {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		align-items: flex-end;
+		width: 100%;
+		height: 100%;
+		padding: 20px;
+		box-shadow: inset 0 -200px 110px rgba($color: $black, $alpha: 0.8);
+		transition: 0.4s ease-out;
+
+		@include tablet {
+			padding: 15px;
+			font-size: 14px;
+			box-shadow: inset 0 -130px 70px rgba($color: $black, $alpha: 0.8);
+		}
+
+		@include mobile {
+			font-size: 12px;
+		}
+	}
+}
+
+.slides-number {
+	color: $blue-main;
+	font-weight: 600;
+	margin: 0 5px;
+	min-width: 80px;
+	text-align: center;
+
+	@include tabletBig {
+		font-size: 14px;
+		position: absolute;
+		bottom: 2px;
+		right: 55px;
+		min-width: unset;
+	}
+
+	@include mobile {
+		right: 35px;
+	}
+}
+
+.slider-actions {
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+
+	@include tabletBig {
+		position: static;
+		margin-top: 0;
+	}
+}
+
+.slider-btn-js {
+	padding: 12px;
+
+	@include tabletBig {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		background-color: $black;
+
+		&::after {
+			content: '';
+			display: block;
+			width: 20px;
+			height: 65%;
+			position: absolute;
+			top: 0;
+		}
+	}
+
+	@include mobile {
+		padding: 8px;
+	}
+
+	.chevron {
+		display: block;
+		width: 18px;
+		height: 18px;
+		border: 3px solid $blue-main;
+		border-width: 3px 3px 0 0;
+
+		@include mobile {
+			width: 16px;
+			height: 16px;
+		}
+	}
+
+	&:hover .chevron {
+		border-color: $titlePink;
+	}
+
+	&-next {
+		@include tabletBig {
+			border-radius: 0 25px 25px 0;
+			box-shadow: 0 -5px 6px rgba($color: $black, $alpha: 1);
+
+			right: 0;
+
+			&::after {
+				right: 100%;
+			}
+		}
+
+		.chevron {
+			transform: rotate(45deg);
+
+			@include tabletBig {
+				transform: rotate(45deg) translate(-2px, 2px);
+			}
+		}
+	}
+
+	&-prev {
+		margin-left: auto;
+
+		@include tabletBig {
+			border-radius: 25px 0 0 25px;
+			left: 0;
+			box-shadow: 0 -5px 6px rgba($color: $black, $alpha: 1);
+
+			&::after {
+				left: 100%;
+			}
+		}
+
+		.chevron {
+			transform: rotate(-135deg);
+
+			@include tabletBig {
+				transform: rotate(-135deg) translate(-2px, 2px);
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1281px) {
+	// scrollbar styles
+	[data-simplebar] {
+		position: relative;
+		padding-right: 30px;
+		z-index: 0;
+
+		@include tabletBig {
+			padding-right: 0;
+		}
+	}
+
+	.simplebar-wrapper {
+		overflow: hidden;
+	}
+
+	.simplebar-mask {
+		direction: inherit;
+		position: absolute;
+		overflow: hidden;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		width: auto !important;
+		height: auto !important;
+		z-index: 0;
+	}
+
+	.simplebar-offset {
+		direction: inherit !important;
+		box-sizing: inherit !important;
+		resize: none !important;
+		position: absolute;
+		top: 0 !important;
+		left: 0 !important;
+		bottom: 0 !important;
+		right: 0 !important;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.simplebar-content-wrapper {
+		direction: inherit;
+		box-sizing: border-box !important;
+		position: relative;
+		display: block;
+		height: 100%; /* Required for horizontal native scrollbar to not appear if parent is taller than natural height */
+		width: auto;
+		max-width: 100%; /* Not required for horizontal scroll to trigger */
+		max-height: 100%; /* Needed for vertical scroll to trigger */
+		overflow: auto;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+			width: 0;
+		}
+	}
+
+	.simplebar-track {
+		z-index: 1;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		cursor: pointer;
+		overflow: hidden;
+	}
+
+	.simplebar-scrollbar {
+		position: absolute;
+		left: 0;
+		right: 0;
+		min-height: 10px;
+	}
+
+	.simplebar-scrollbar:before {
+		content: '';
+		background: $blue-main;
+		border-radius: 10px;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	.simplebar-track.simplebar-vertical {
+		top: 0;
+		width: 6px;
+		border-radius: 10px;
+		background: $darkest;
+	}
+}
+
+// TODO: preloads on mobile / removing useless
+
+.language-disable {
+	.idea-tabs__btn.ru {
+		display: none;
+	}
+}
+
+.desktop-slider {
+	display: flex;
+	width: 100%;
+}
+
+@include tabletBig {
+	[data-simplebar],
+	.desktop-slider,
+	.slider-with-btn .copy-tablet,
+	.slider-with-btn .idea-contacts {
+		display: none;
+	}
+}
