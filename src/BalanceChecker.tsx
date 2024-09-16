@@ -22,7 +22,6 @@ const BalanceChecker: React.FC = () => {
   const [copiedAddress, setCopiedAddress] = useState(''); // Endereço copiado
   const [searchTerm, setSearchTerm] = useState(''); // Termo de busca
   const [isConnected, setIsConnected] = useState(false); // Status de conexão
-  const [error, setError] = useState<string>(""); // Erros gerais
   const [duplicateAddressError, setDuplicateAddressError] = useState(false); // Endereço duplicado
   const [successMessage, setSuccessMessage] = useState(false); // Mensagem de sucesso ao adicionar
 
@@ -43,8 +42,7 @@ const BalanceChecker: React.FC = () => {
         await getBalance(account);
       }
     } catch (error) {
-      setError("Erro ao carregar endereços do backend");
-      console.error(error);
+      console.error("Erro ao carregar endereços do backend", error);
     }
   };
 
@@ -55,8 +53,7 @@ const BalanceChecker: React.FC = () => {
       const flowBalance = formatUnits(balance, 18);
       setBalances(prev => ({ ...prev, [account]: parseFloat(flowBalance).toFixed(2) }));
     } catch (error) {
-      setError("Erro ao consultar saldo");
-      console.error(error);
+      console.error("Erro ao consultar saldo", error);
     }
   };
 
@@ -77,15 +74,13 @@ const BalanceChecker: React.FC = () => {
       const normalizedAccounts = accountsList.map(account => account.toLowerCase());
       setAccounts(prev => Array.from(new Set([...prev, ...normalizedAccounts]))); // Evita duplicatas
       setIsConnected(true);
-      setError("");
 
       for (const account of normalizedAccounts) {
         await checkAndAddAddress(account);
         await getBalance(account);
       }
     } catch (error) {
-      setError("Erro ao conectar MetaMask");
-      console.error(error);
+      console.error("Erro ao conectar MetaMask", error);
     }
   };
 
@@ -113,8 +108,7 @@ const BalanceChecker: React.FC = () => {
         console.log(`Endereço ${address} já existe.`);
       }
     } catch (error) {
-      setError("Erro ao verificar/adicionar endereço no backend");
-      console.error(error);
+      console.error("Erro ao verificar/adicionar endereço no backend", error);
     }
   };
 
@@ -132,7 +126,7 @@ const BalanceChecker: React.FC = () => {
         setTimeout(() => setDuplicateAddressError(false), 3000);
       }
     } else {
-      setError("Endereço inválido");
+      console.error("Endereço inválido");
     }
   };
 
@@ -153,7 +147,6 @@ const BalanceChecker: React.FC = () => {
     setAccounts([]); // Limpa as contas
     setBalances({}); // Limpa os saldos
     setIsConnected(false); // Desconecta
-    setError("");
 
     if (window.ethereum) {
       window.ethereum.request({
@@ -171,7 +164,7 @@ const BalanceChecker: React.FC = () => {
 
   // Carregar endereços do backend e ordenar ao carregar o componente
   useEffect(() => {
-    loadAddressesFromBackend(); // Carregar lista de endereços do backend
+    loadAddressesFromBackend();
   }, []);
 
   // Ordena os endereços sempre que os saldos são atualizados
