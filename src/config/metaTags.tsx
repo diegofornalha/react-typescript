@@ -23,7 +23,7 @@ export const startupsMetaTags = {
 };
 
 export const aboutMetaTags = {
-	title: `Olexander Tsiomakh: Idea Thinker | Developer | Creator`,
+	title: `XFX ACADEMY: Idea Thinker | Developer | Creator`,
 	description: `Inventing Solutions, scenario creator, enthusiast, versatility, adventurist ambassador, development advocacy, boundless self-irony, self-Development and growth...`,
 	canonicalUrl: `https://buhowski.dev/about`,
 
@@ -35,7 +35,7 @@ export const aboutMetaTags = {
 };
 
 export const portfolioMetaTags = {
-	title: `Olexander Tsiomakh: Portfolio | Projects Overview`,
+	title: `XFX ACADEMY: Portfolio | Projects Overview`,
 	description: `Portfolio showcasing what I've done for other companies or my own projects.`,
 	canonicalUrl: `https://buhowski.dev/projects`,
 

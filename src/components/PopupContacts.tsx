@@ -18,7 +18,7 @@ const dataContacts = [
 	{
 		name: 'LinkedIn: ',
 		url: urlLinkedIn,
-		linkTitle: 'Olexander Tsiomakh',
+		linkTitle: 'XFX ACADEMY',
 	},
 
 	{
