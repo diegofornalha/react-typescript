@@ -1,5 +1,5 @@
 export const defaultMetaTags = {
-	title: `Olexander Tsiomakh: Developer | Idea Thinker | Creator`,
+	title: `XFX ACADEMY`,
 	description: `Want to build awesome things and contribute something useful to the world. Based on Planet Earth, Solar System.`,
 	canonicalUrl: `https://buhowski.dev/`,
 
